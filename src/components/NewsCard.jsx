@@ -46,7 +46,7 @@ function NewsCard() {
             <img
               src={news.image_url}
               alt="News"
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full h-full object-cover rounded-md"
             />
           </div>
 

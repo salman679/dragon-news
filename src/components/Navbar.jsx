@@ -22,7 +22,18 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="flex items-center gap-2">
-        <img src={userIcon} alt="userIcon" />
+        {user?.email ? (
+          <div className="flex flex-col items-center">
+            <img
+              className="w-10 rounded-full h-10"
+              src={user.photoURL}
+              alt=""
+            />
+            <span>{user.displayName}</span>
+          </div>
+        ) : (
+          <img src={userIcon} alt="userIcon" />
+        )}
         {user ? (
           <button
             onClick={signOutUser}

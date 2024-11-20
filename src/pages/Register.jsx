@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AllContext";
 
 export default function Register() {
-  const { setUser, createUser } = useContext(AuthContext);
+  const { setUser, createUser, updateUserProfile } = useContext(AuthContext);
+  const [error, setError] = useState({});
 
   const navigate = useNavigate();
 
@@ -12,6 +13,10 @@ export default function Register() {
 
     const form = new FormData(e.target);
     const name = form.get("name");
+    if (name.length < 6) {
+      setError({ ...error, name: "your name at least must be 6 cherecter." });
+      return;
+    }
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
@@ -19,11 +24,14 @@ export default function Register() {
     createUser(email, password)
       .then((result) => {
         setUser(result.user);
+
+        updateUserProfile({ displayName: name, photoURL: photo });
+
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
+        // console.log(error.code);
+        // console.log(error.message);
       });
 
     setUser({ name, photo, email, password });
@@ -52,6 +60,11 @@ export default function Register() {
               className="input bg-zinc-100 rounded-none"
               required
             />
+            {error?.name && (
+              <label className="label">
+                <span className="label-text font-bold">{error.name}</span>
+              </label>
+            )}
           </div>
           <div className="form-control">
             <label className="label">

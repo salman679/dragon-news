@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import RightNav from "../components/RightNav";
 import LeftNav from "../components/LeftNav";
+import LatestNews from "../components/LatestNews";
 
 export default function HomeLayout() {
   return (
@@ -10,6 +11,9 @@ export default function HomeLayout() {
       <header className="container mx-auto w-11/12">
         <Header />
       </header>
+      <section>
+        <LatestNews />
+      </section>
       <nav className="mx-auto w-11/12">
         <Navbar />
       </nav>

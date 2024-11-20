@@ -1,6 +1,5 @@
 import moment from "moment/moment";
 import logo from "../assets/images/logo.png";
-import LatestNews from "./LatestNews";
 
 export default function Header() {
   return (
@@ -17,7 +16,6 @@ export default function Header() {
           {moment().format("MMM D, YYYY")}
         </p>
       </div>
-      <LatestNews />
     </>
   );
 }
