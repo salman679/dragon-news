@@ -29,7 +29,7 @@ export default function Register() {
 
         navigate("/");
       })
-      .catch((error) => {
+      .catch(() => {
         // console.log(error.code);
         // console.log(error.message);
       });

@@ -8,7 +8,7 @@ export default function LeftNav() {
     fetch("https://openapi.programming-hero.com/api/news/categories")
       .then((res) => res.json())
       .then((res) => setCategories(res.data.news_category))
-      .catch((error) => {
+      .catch(() => {
         // console.log(error)
       });
   }, []);
